@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> MMORPS </title>
+</head>
+  <body>
+
+    <h1>PLAY ROCK PAPER SCISSORS!</h1>
+
+    <form action="/" method="post">
+      <label for = "rock"></label>
+      <input type = "submit" name="choice" value="rock">
+      <label for = "paper"></label>
+      <input type = "submit" name="choice" value="paper">
+      <label for = "scissors"></label>
+      <input type = "submit" name="choice" value="scissors">
+    </form>
+
+    <% unless session[:human_choice].nil? %>
+      <p>Player chooses <%= session[:human_choice] %></p>
+      <p>Computer chooses <%= session[:comp_choice] %></p>
+      <p><%= session[:result] %>!</p>
+    <% end %>
+
+    <p>Player score: <%= session[:human_score] %> </p>
+    <p>Computer score: <%= session[:comp_score] %> </p>
+
+    <% unless session[:winner] == 'nobody' %>
+      <p2>The <%= session[:winner] %> has won!! </p2>
+      <form action="/reset" method="post">
+        <input type = "submit" name="reset" value="Play again">
+      </form>
+    <% end %>
+  </body>
+</html>
